@@ -87,31 +87,16 @@ EOF;
         //$db->close();
     }
 
-# insert students
-    function insert_students($db){
-
-        $sql =<<<EOF
-        INSERT INTO students (sid, name) VALUES(1, 'Bowie');
-        INSERT INTO students (sid, name) VALUES(2, 'Cohen');
-        INSERT INTO students (sid, name) VALUES(3, 'Prince');
-        INSERT INTO students (sid, name) VALUES(4, 'Lemmy');
-EOF;
-       $in = $db->exec($sql);
-        if(!$in){
-            echo $db->lastErrorMsg();   
-        }else{
-            echo "Grades created\n";
-        }   
-        //$db->close();
-    }
-
 # calls
     create_student($db);
     create_teacher($db);
     create_subjects($db);
     create_grades($db);
-    insert_students($db);
-    
+   
+
     echo "Operations successfull:)\n";
-    $db->close();
+    //$db->close();
+# include to run scripts
+     #include('select.php');
+
 ?>

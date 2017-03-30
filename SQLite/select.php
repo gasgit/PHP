@@ -12,7 +12,7 @@
     }else{
         echo "Opened Sucessfully\n";
     }
-   
+
 # select all students query
     function select_students($db){
     $sql = <<<EOF
@@ -20,14 +20,29 @@
 
 EOF;
 
-    $ret = $db->query($sql);
-    while($row = $ret->fetchArray(SQLITE3_ASSOC) ){
+    $sel = $db->query($sql);
+    while($row = $sel->fetchArray(SQLITE3_ASSOC) ){
         echo "SID: ".$row['sid']."\n";
+        echo "Name: ".$row['name']."\n";
+    }
+    }
+
+
+    function select_teachers($db){
+    $sql = <<<EOF
+    SELECT * FROM teachers;
+
+EOF;
+
+    $sel = $db->query($sql);
+    while($row = $sel->fetchArray(SQLITE3_ASSOC) ){
+        echo "TID: ".$row['tid']."\n";
         echo "Name: ".$row['name']."\n";
     }
     }
 # calls
     select_students($db);
+    select_teachers($db);
 
 
 ?>
